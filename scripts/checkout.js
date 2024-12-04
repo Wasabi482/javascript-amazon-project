@@ -1,5 +1,5 @@
 import {renderOrderSummary} from "./checkout/orderSummary.js";
-
+import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 //recursion - function re-run itself
 //MVC- updating the data and regenerating all the HTML
 //MVC - Model - View - Controller
@@ -7,3 +7,4 @@ import {renderOrderSummary} from "./checkout/orderSummary.js";
 //View - takes the data and displays it on the page
 //Controller - runs some code when we interact with the page
 renderOrderSummary();
+renderPaymentSummary();
