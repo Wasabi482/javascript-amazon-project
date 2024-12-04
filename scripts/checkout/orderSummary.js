@@ -13,6 +13,10 @@ import { renderPaymentSummary } from "./paymentSummary.js";
 
 hello();
 
+//const today = dayjs();
+//const deliveryDate =  today.add(7, 'days');
+//console.log(deliveryDate.format('dddd, MMMM D'));
+
 
 export function renderOrderSummary(){
 
