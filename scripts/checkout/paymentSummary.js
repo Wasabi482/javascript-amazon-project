@@ -4,6 +4,12 @@ import { getDeliveryOption } from '../../data/deliveryOptions.js';
 import {formatCurrency} from '../utils/money.js'
 
 export function renderPaymentSummary() {
+  const paymentSummaryElement = document.querySelector('.js-payment-summary');
+
+
+  if (!paymentSummaryElement) {
+    return;
+  }
   let productPriceCents = 0;
   let shippingPriceCents = 0;
 

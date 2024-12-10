@@ -38,3 +38,5 @@ describe('test suite: addToCart', () => {
 });
 //Flaky Test = test that sometimes passes and sometimes fails
 //Mocks = lets us replace a method with fake version
+//Unit test = testing 1 piece of the code
+//Integration Test = tests many units/pieces of code working together

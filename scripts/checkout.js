@@ -7,6 +7,8 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 //Model - saves and manages the data
 //View - takes the data and displays it on the page
 //Controller - runs some code when we interact with the page
-renderCheckoutHeader();
-renderOrderSummary();
-renderPaymentSummary();
+document.addEventListener('DOMContentLoaded', () => {
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+});
