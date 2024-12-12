@@ -1,19 +1,23 @@
 //class = object generator
 class Cart {
   cartItems;
-  localStorageKey;
+
+  //Private Property = #
+  //Public Property = without #
+  #localStorageKey;
 
   //Constructor
   //*Has to be named "constructor"
   //*Should not return anything
   //
   constructor(localStorageKey){
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();
   }
 
-  loadFromStorage(){
-    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+  //Private Methods
+  #loadFromStorage(){
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
   
     if(!this.cartItems){
       this.cartItems = [{
@@ -29,7 +33,7 @@ class Cart {
   }
 
   saveToStorage(){
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
   }
 
   addToCart(productId) {
