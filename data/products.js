@@ -32,8 +32,32 @@ class Product {
   getPrice(){
     return `$${formatCurrency(this.priceCents)}`;
   }
+
+  extraInfoHTML(){
+    return '';
+  }
 }
 
+class Clothing extends Product{
+  sizeChartLink;
+
+  constructor(productDetails) {
+    //Super, calls the constructer of the parent class
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+
+  //Method Overriding, this overrides the "extraInfoHTMl" of the parent class
+  extraInfoHTML(){
+    //super.extraInfoHTML();
+    return `
+      <a href="${this.sizeChartLink}" target="_blank">
+        Size chart
+      </a>
+    `;
+  }
+}
+//Inheritance let us reuse code between classes
 
 export const products = [
   {
@@ -695,6 +719,9 @@ export const products = [
     ]
   }
 ].map((productDetails) => {
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 });
 

@@ -44,6 +44,9 @@ products.forEach((product) => {
         </select>
       </div>
 
+      <!--Polymorphism, using a method without knowing the class-->
+      ${product.extraInfoHTML()}
+
       <div class="product-spacer"></div>
 
       <div class="added-to-cart">
