@@ -3,30 +3,39 @@ import { getProduct } from '../../data/products.js';
 import { getDeliveryOption } from '../../data/deliveryOptions.js';
 import {formatCurrency} from '../utils/money.js'
 
+//Exports the function
+//Retrieve the html element responsible for displaying the summary
 export function renderPaymentSummary() {
   const paymentSummaryElement = document.querySelector('.js-payment-summary');
 
-
+  //if nothing is in the html then return nothing
   if (!paymentSummaryElement) {
     return;
   }
+
   let productPriceCents = 0;
   let shippingPriceCents = 0;
 
-
+  //Iterates through each item in the cart
+  //Every product's price cents is multiplied to the number of quantity then stored in a variable.
   cart.forEach((cartItem) => {
     const product = getProduct(cartItem.productId);
     productPriceCents += product.priceCents * cartItem.quantity;
 
+    //Every product's delivery price is added to each other every loop
     const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
     shippingPriceCents += deliveryOption.priceCents;
   });
 
+  //Add the shipping fee and price together
   const totalBeforeTaxCents = productPriceCents + shippingPriceCents;
+  //Store the tax
   const taxCents = totalBeforeTaxCents * 0.1;
+  //Add the tax 
   const totalCents = totalBeforeTaxCents + taxCents;
 
 
+  //Generate the html inserting the values
   const paymentSummaryHTML = `
     <div class="payment-summary-title">
       Order Summary
@@ -63,5 +72,6 @@ export function renderPaymentSummary() {
   `
   ;
 
+  //Retrieve the summary section and display the html 
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 }

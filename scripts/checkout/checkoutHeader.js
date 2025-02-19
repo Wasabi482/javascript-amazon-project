@@ -1,8 +1,9 @@
+//Import cart from cart.js 
 import {cart} from '../../data/cart.js'
 
+//Handles the checkout header including the cart quantity
 export function renderCheckoutHeader(){
   const checkoutHeaderElement = document.querySelector('.js-checkout-header');
-
 
   if (!checkoutHeaderElement) {
     return;
@@ -14,6 +15,7 @@ export function renderCheckoutHeader(){
 
   });
 
+  //generates the html for header of the page
   const checkoutHeaderHTML = `
   <div class="checkout-header">
     <div class="header-content">
@@ -36,5 +38,8 @@ export function renderCheckoutHeader(){
   </div>
 `;
 
+//displays the html using document query selector.
   document.querySelector('.js-checkout-header').innerHTML = checkoutHeaderHTML;
 }
+
+//Go to orderSummary.js

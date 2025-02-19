@@ -1,6 +1,9 @@
 import {formatCurrency} from '../scripts/utils/money.js'
 export function getProduct (productId){
   let matchingProduct;
+
+    //Iterates through each product in the product object
+    //if the productId (which is from other source) is equal to the product.id in the object, store that specific product object in the matchingProduct
     products.forEach((product) => {
       if(product.id === productId){
         matchingProduct = product;

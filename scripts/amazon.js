@@ -5,6 +5,9 @@ import { formatCurrency } from './utils/money.js';
 
 let productsHTML = '';
 
+//Imports the products from products.js
+//Iterates through each object and displays it
+//Each iteration puts the html inside productsHTML
 products.forEach((product) => {
   productsHTML += `
     <div class="product-container">
@@ -62,8 +65,12 @@ products.forEach((product) => {
   `;
 });
 
+//Displays the productsHTML in the window using document.querySelector
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+//Imports the calculateCartQuantity and puts it in a variable
+//If empty display a blank on the cart
+//Else display the cartQuantity
 function updateCartQuantity() {
   const cartQuantity = calculateCartQuantity();
 
@@ -76,7 +83,10 @@ function updateCartQuantity() {
 }
 updateCartQuantity();
 
-
+//Iterates each add to cart button and listens
+//If clicked it will store the product id into a variable
+//Imports the addToCart function from cart.js and calls it with the productId variable
+//Calls the updateCartQuantity function to update the cart count
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
@@ -85,3 +95,5 @@ document.querySelectorAll('.js-add-to-cart')
       updateCartQuantity();
     });
   });
+
+  //go to cart.js
