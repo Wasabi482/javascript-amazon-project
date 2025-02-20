@@ -97,6 +97,34 @@ object3.method();
 
 export let products = [];
 
+  export function loadProductsFetch(){
+    //Default is Get Request
+    //When fetch is called it will create a promise
+    //response will contain the result of the fetch
+    const promise = fetch('https://supersimplebackend.dev/products').then((response) => {
+      //Gives the data attached with the response
+      return response.json();
+    }).then((productsData) => {
+      products = productsData.map((productDetails) => {
+        if (productDetails.type === 'clothing') {
+          return new Clothing(productDetails);
+        }
+        return new Product(productDetails);
+      });
+
+      console.log('load products');
+    });
+
+    return promise;
+  }
+
+  /*
+  loadProductsFetch().then(() => {
+    console.log('next step');
+  });
+
+  */
+
   //Calling the function "renderProductsGrid" from amazon.js is called "Callback"
   //Callback is a function to run in the future
   export function loadProducts(fun){
@@ -112,7 +140,7 @@ export let products = [];
 
       console.log('load products');
 
-      fun()
+      fun();
     });
 
     xhr.open('Get', 'https://supersimplebackend.dev/products');
