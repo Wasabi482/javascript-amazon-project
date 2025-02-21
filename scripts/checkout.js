@@ -18,20 +18,37 @@ import { loadCart } from "../data/cart.js";
 //The reason to use async is to use the second feature await
 //await lets us wait for a promise to finish
 async function loadPage(){
-  //same as resolve value2
 
-  //use this "await" instead of .then
-  //this lets us write asynchronous code like normal code.
-  //Can only use await when inside an async function.
-  //You cant use await inside a normal function
-  //Async await shortcut for promises
-  await loadProductsFetch();
+  //try/catch meant to handle unexpected errors. outside of our control
+  try {
 
-  const calue = await new Promise((resolve) => {
-    loadCart(() => {
-      resolve('value3');
+    //manually create an error
+   //throw 'error1';
+
+    //use this "await" instead of .then
+    //this lets us write asynchronous code like normal code.
+    //Can only use await when inside an async function.
+    //You cant use await inside a normal function
+    //Async await shortcut for promises
+    await loadProductsFetch();
+
+    //"reject" creates an error in the future
+    const calue = await new Promise((resolve, reject) => {
+
+      //manually error in promises
+      //throw 'error2';
+
+
+      loadCart(() => {
+        //reject('error3');
+        resolve('value3');
+      });
     });
-  });
+
+  } catch (error) {
+    console.log('Unexpected Error. Please try again later.');
+  }
+
 
   renderCheckoutHeader();
   renderOrderSummary();

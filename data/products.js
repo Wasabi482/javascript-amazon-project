@@ -113,11 +113,12 @@ export let products = [];
       });
 
       console.log('load products');
+    }).catch(() => {
+      console.log('Unexpected Error. Please try again later.');
     });
 
     return promise;
   }
-
   /*
   loadProductsFetch().then(() => {
     console.log('next step');
@@ -143,10 +144,15 @@ export let products = [];
       fun();
     });
 
+    //paramet Error contains an information about the error
+    xhr.addEventListener('error', (error) => {
+      console.log('Unexpected Error. Please try again later.')
+    });
+
     xhr.open('Get', 'https://supersimplebackend.dev/products');
     xhr.send();
   };
-
+  
 
 /*
 export const products = [
