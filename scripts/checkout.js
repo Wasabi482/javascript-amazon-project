@@ -14,6 +14,31 @@ import { loadCart } from "../data/cart.js";
 //View - takes the data and displays it on the page
 //Controller - runs some code when we interact with the page
 
+//Makes a function return a promise
+//The reason to use async is to use the second feature await
+//await lets us wait for a promise to finish
+async function loadPage(){
+  //same as resolve value2
+
+  //use this "await" instead of .then
+  //this lets us write asynchronous code like normal code.
+  //Can only use await when inside an async function.
+  //You cant use await inside a normal function
+  //Async await shortcut for promises
+  await loadProductsFetch();
+
+  const calue = await new Promise((resolve) => {
+    loadCart(() => {
+      resolve('value3');
+    });
+  });
+
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+loadPage();
+/*
 //Promise.all(), lets us run multiple promises at the same time
 Promise.all([
   loadProductsFetch(),
@@ -21,7 +46,7 @@ Promise.all([
     loadCart(() => {
       resolve();
     });
-  }),
+  })
   //values is a parameter from resolve
 ]).then((values) => {
   console.log(values);
@@ -29,7 +54,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
-
+*/
 
 //Resolve is similar to Jasmine "done" function
 
