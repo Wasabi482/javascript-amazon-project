@@ -28,7 +28,7 @@ function saveToStorage(){
 
 
 //From amazon.js gets the productId
-export function addToCart(productId) {
+export function addToCart(productId,  quantity = 1) {
   let matchingItem;
 
   //Iterates to each product in the cart and compares the productId and stores it in a variable
@@ -42,14 +42,13 @@ export function addToCart(productId) {
   //Else it will push the new product in the cart updating the quantity by 1 and the delivery option
   //Save everything so when the page refreshes
   if (matchingItem) {
-    matchingItem.quantity += 1;
+    matchingItem.quantity += quantity;
   } else {
     cart.push({
       productId: productId,
-      quantity: 1,
+      quantity: quantity,
       deliveryOptionId: '1'
     });
-    console.log(1);
   }
 
   saveToStorage();

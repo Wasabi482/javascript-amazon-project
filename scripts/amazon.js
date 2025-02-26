@@ -36,7 +36,7 @@ function renderProductsGrid(){
         </div>
 
         <div class="product-quantity-container">
-          <select>
+          <select class="js-quantity-selector-${product.id}">
             <option selected value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -94,7 +94,14 @@ function renderProductsGrid(){
     .forEach((button) => {
       button.addEventListener('click', () => {
         const productId = button.dataset.productId;
-        addToCart(productId);
+        // Get the selected quantity from the dropdown
+        const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+        const quantity = parseInt(quantitySelector.value, 10);
+
+        // Add the product to the cart with the selected quantity
+        addToCart(productId, quantity);
+
+        // Update the cart quantity display
         updateCartQuantity();
       });
     });
