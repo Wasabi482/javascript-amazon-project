@@ -107,4 +107,5 @@ function renderProductsGrid(){
     });
 }
 
+
   //go to cart.js
